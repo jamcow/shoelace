@@ -526,6 +526,16 @@
   --sl-z-index-dropdown: 900;
   --sl-z-index-toast: 950;
   --sl-z-index-tooltip: 1000;
+
+  /*
+   * Custom Component Themes
+   */
+
+  --sl-option-color: var(--sl-color-neutral-700);
+  --sl-option-background-color-hover: var(--sl-color-neutral-100);
+  --sl-option-color-hover: var(--sl-color-neutral-1000);
+  --sl-option-background-color-current: var(--sl-color-primary-600);
+  --sl-option-color-current: var(--sl-color-neutral-0);
 }
 
 /* _utility.css */

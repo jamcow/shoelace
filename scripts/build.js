@@ -149,11 +149,14 @@ fs.mkdirSync(outdir, { recursive: true });
     bs.watch(['src/**/!(*.test).*']).on('change', async filename => {
       console.log(`Source file changed - ${filename}`);
       buildResult
-        // Rebuild and reload
-        .rebuild()
-        .then(() => {
-          // Rebuild stylesheets when a theme file changes
-          if (/^src\/themes/.test(filename)) {
+      // Rebuild and reload
+      .rebuild()
+      .then(() => {
+        console.log(`Rebuilt filename :: ${filename}`);
+        // Rebuild stylesheets when a theme file changes
+        // OS system paths use backslashes on Windows
+        if ((/^src\/themes/.test(filename)) || (/^src\\themes/.test(filename))) {
+            console.log(`theme changed, outputting to  "${outdir}"`);
             execSync(`node scripts/make-themes.js --outdir "${outdir}"`, { stdio: 'inherit' });
           }
         })
